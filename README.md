@@ -3,6 +3,7 @@
 Corrección: Se deshabilita temporalmente el botón para evitar múltiples clics.
 
 Antes (Vulnerable a spam de clics)
+
 ```dart
 ElevatedButton(
   onPressed: () {
@@ -20,6 +21,7 @@ ElevatedButton(
 No hay validación de frecuencia de clics.
 Un script podría hacer clic rápidamente y generar spam.
 Después (Código corregido)
+
 ```dart
 bool _isPublishing = false;
 
@@ -48,6 +50,7 @@ Evita spam y automatización de interacciones no deseadas.
 Corrección: Se eliminó la validación insegura de credenciales y se reemplazó por Firebase Authentication.
 
 Antes (Código inseguro)
+
 ```dart
 class LoginScreen extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
@@ -119,7 +122,7 @@ class LoginScreen extends StatelessWidget {
 }
 ```
 
-Problema:
+## Problema:
 
 Las credenciales están en el código (Un atacante podría encontrarlas fácilmente).
 No hay encriptación ni autenticación real.
@@ -215,3 +218,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 ```
+
+## Mejoras:
+La función _login ahora está dentro de _LoginScreenState y usa Firebase para autenticar usuarios.
+Se agregaron controles para evitar múltiples inicios de sesión seguidos, usando _isLoading.
+El botón de "Login" ahora usa _login correctamente.
+Se cambió controller: _usernameController por controller: _emailController, ya que Firebase usa correos electrónicos para autenticar usuarios.
+El botón ahora desactiva el login si _isLoading es true, evitando clics múltiples.
+Al iniciar sesión con éxito, se navega a HomeScreen usando Navigator.pushReplacement(), para que el usuario no pueda volver atrás con el botón de retroceso.
