@@ -220,9 +220,9 @@ class _LoginScreenState extends State<LoginScreen> {
 ```
 
 ## Mejoras:
-La función _login ahora está dentro de _LoginScreenState y usa Firebase para autenticar usuarios.
-Se agregaron controles para evitar múltiples inicios de sesión seguidos, usando _isLoading.
-El botón de "Login" ahora usa _login correctamente.
-Se cambió controller: _usernameController por controller: _emailController, ya que Firebase usa correos electrónicos para autenticar usuarios.
-El botón ahora desactiva el login si _isLoading es true, evitando clics múltiples.
-Al iniciar sesión con éxito, se navega a HomeScreen usando Navigator.pushReplacement(), para que el usuario no pueda volver atrás con el botón de retroceso.
+- La función _login ahora está dentro de _LoginScreenState y usa Firebase para autenticar usuarios.
+- Se agregaron controles para evitar múltiples inicios de sesión seguidos, usando _isLoading.
+- El botón de "Login" ahora usa _login correctamente.
+- Se cambió controller: _usernameController por controller: _emailController, ya que Firebase usa correos electrónicos para autenticar usuarios.
+- El botón ahora desactiva el login si _isLoading es true, evitando clics múltiples.
+- Al iniciar sesión con éxito, se navega a HomeScreen usando Navigator.pushReplacement(), para que el usuario no pueda volver atrás con el botón de retroceso.
